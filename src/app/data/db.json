@@ -7,7 +7,7 @@
     },
     {
       "id": 2,
-      "title": "Tales of Cuthulu",
+      "title": "Tales of Cthulhu",
       "author": "2"
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "id": 4,
-      "title": "Raven",
+      "title": "The Raven",
       "author": "1"
     },
     {
@@ -27,19 +27,31 @@
     },
     {
       "id": 6,
-      "title": "100 años de soledad",
-      "author": "5"
+      "title": "Black Tales",
+      "author": "1"
     }
   ],
   "libraries": [
     {
-      "id": 1,
-      "name": "Center",
-      "address": "Street 123",
+      "id": 2,
+      "name": "Franchese",
+      "address": "Street A 123",
       "books": [
-        {
-          "book_id": 1
-        }
+        "Black Cat",
+        "Tales of Cthulhu",
+        "Black Humor Tales",
+        "Raven",
+        "Necronomicon"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Central Park",
+      "address": "Street B 123",
+      "books": [
+        "Black Cat",
+        "The Raven",
+        "Black Tales"
       ]
     }
   ],

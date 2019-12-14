@@ -22,6 +22,8 @@ export class AuthorsComponent implements OnInit {
     title: ''
   };
 
+  isLoaded = false;
+
   constructor(protected service: DataService, protected fb: FormBuilder) {
 
     this.authorForm = this.fb.group({
@@ -38,7 +40,9 @@ export class AuthorsComponent implements OnInit {
       this.authors = data as Author[];
     }, (error) => {
       this.msgText = error.message;
-    } );
+    }, () => {
+      this.isLoaded = true;
+    });
 
   }
 
@@ -77,13 +81,31 @@ export class AuthorsComponent implements OnInit {
         () => {this.reloadData()});
     }
 
-
     this.option = 'Send';
   }
 
   reloadData(){
+    this.resetItems();
+    this.service.getAuthors().subscribe((data) => {
+      this.authors = data as Author[]
+    }, (error) => {
+      this.msgText = error.message;
+    }, () => {
+        this.isLoaded = true;
+    });
+  }
+
+  resetItems(){
     this.authors = [];
-    this.service.getAuthors().subscribe((data) => {this.authors = data as Author[]}, (error) => {this.msgText = error.message;});
+    this.isLoaded = false;
+    this.card = {
+      title: ''
+    };
+
+    this.authorForm = this.fb.group({
+      id: null,
+      name: ''
+    });
   }
 
 }

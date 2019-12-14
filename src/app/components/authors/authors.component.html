@@ -43,8 +43,11 @@
 </div>
 
 
+<div class="spinner-border text-primary" role="status" *ngIf="!isLoaded">
+  <span class="sr-only">Loading...</span>
+</div>
 
-<div class="col-lg-12">
+<div class="col-lg-12" *ngIf="isLoaded">
   <table class="table">
     <thead>
     <tr>

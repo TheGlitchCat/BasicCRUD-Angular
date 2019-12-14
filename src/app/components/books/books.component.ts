@@ -24,6 +24,7 @@ export class BooksComponent implements OnInit {
     desc: '',
   };
 
+  isLoaded = false;
 
   constructor(protected service: DataService, protected fb: FormBuilder) {
 
@@ -42,7 +43,9 @@ export class BooksComponent implements OnInit {
       this.books = data as Book[];
     }, (error) => {
       this.msgText = error.message;
-    } );
+    }, () =>{
+      this.isLoaded = true;
+    });
     this.service.getAuthors().subscribe((data) => {
       this.authors = data as Author[];
     });
@@ -90,8 +93,29 @@ export class BooksComponent implements OnInit {
   }
 
   reloadData(){
+    this.resetItems();
+    this.service.getBooks().subscribe((data) => {
+      this.books = data as Book[]
+    }, (error) => {
+      this.msgText = error.message;
+    }, () => {
+      this.isLoaded = true;
+    });
+  }
+
+  resetItems(){
     this.books = [];
-    this.service.getBooks().subscribe((data) => {this.books = data as Book[]}, (error) => {this.msgText = error.message;});
+    this.isLoaded = false;
+    this.card = {
+      title: '',
+      desc: '',
+    };
+
+    this.bookForm = this.fb.group({
+      id: null,
+      title: '',
+      author: null
+    });
   }
 
 }

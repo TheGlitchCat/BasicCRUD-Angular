@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DataService} from '../../services/data.service';
-import {Library} from '../../models/models.model';
+import {Book, Library} from '../../models/models.model';
 
 @Component({
   selector: 'app-libraries',
@@ -13,6 +13,7 @@ export class LibrariesComponent implements OnInit {
   msgText: string;
 
   libraries: object = [];
+  books: object = [];
 
   libraryForm: FormGroup;
 
@@ -23,6 +24,7 @@ export class LibrariesComponent implements OnInit {
     desc: '',
   };
 
+  isLoaded = false;
 
   constructor(protected service: DataService, protected fb: FormBuilder) {
 
@@ -37,12 +39,32 @@ export class LibrariesComponent implements OnInit {
 
   ngOnInit() {
 
+    this.service.getBooks().subscribe((data) => {
+      console.log(data);
+      this.books = data as Book[];
+    }, (error) => {
+      this.msgText = error.message;
+    }, () => {
+      setTimeout(() => {
+        // @ts-ignore
+        $('.selectpicker').selectpicker('refresh');
+      });
+    });
+
     this.service.getLibraries().subscribe((data) => {
       console.log(data);
       this.libraries = data as Library[];
     }, (error) => {
       this.msgText = error.message;
-    } );
+    }, () => {
+      this.isLoaded = true;
+    });
+
+  }
+
+  refreshSelect() {
+    // @ts-ignore
+    $('.selectpicker').selectpicker('refresh');
   }
 
   showLibrary(library){
@@ -88,8 +110,30 @@ export class LibrariesComponent implements OnInit {
   }
 
   reloadData(){
+    this.resetItems();
+    this.service.getLibraries().subscribe((data) => {
+      this.libraries = data as Library[]
+    }, (error) => {
+      this.msgText = error.message;
+    }, () => {
+      this.isLoaded = true;
+    });
+  }
+
+  resetItems(){
     this.libraries = [];
-    this.service.getLibraries().subscribe((data) => {this.libraries = data as Library[]}, (error) => {this.msgText = error.message;});
+    this.isLoaded = false;
+    this.card = {
+      title: '',
+      desc: '',
+    };
+
+    this.libraryForm = this.fb.group({
+      id: null,
+      name: '',
+      address: '',
+      books: []
+    });
   }
 
 }
