@@ -62,11 +62,6 @@ export class LibrariesComponent implements OnInit {
 
   }
 
-  refreshSelect() {
-    // @ts-ignore
-    $('.selectpicker').selectpicker('refresh');
-  }
-
   showLibrary(library){
     console.log(library.id, library.name);
     this.libraryForm = this.fb.group({
