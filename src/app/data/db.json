@@ -24,6 +24,11 @@
       "id": 5,
       "title": "Necronomicon",
       "author": "2"
+    },
+    {
+      "id": 6,
+      "title": "100 años de soledad",
+      "author": "5"
     }
   ],
   "libraries": [
@@ -54,6 +59,10 @@
     {
       "id": 4,
       "name": "Arthur Conan Doyle"
+    },
+    {
+      "id": 5,
+      "name": "Gabriel Garcia Marquez"
     }
   ]
 }

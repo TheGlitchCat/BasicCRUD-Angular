@@ -51,12 +51,12 @@
     </form>
   </div>
 
-  <div class="col-lg-2 card" style="width: 18rem;">
+  <div *ngIf="card.title" class="col-lg-2 card" style="width: 18rem;">
     <img src="http://via.placeholder.com/100" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">{{cardTitle}}</h5>
+      <h5 class="card-title">{{card.title}}</h5>
       <ng-container *ngFor="let author of authors">
-        <p  *ngIf="author.id == cardDesc">{{author.name}}</p>
+        <p  *ngIf="author.id == card.desc">{{author.name}}</p>
       </ng-container>
     </div>
   </div>
@@ -85,7 +85,6 @@
         <td  *ngIf="author.id == book.author">{{author.name}}</td>
       </ng-container>
       <td><button type="button" class="btn btn-primary" (click)="showBook(book)">Show</button></td>
-      <td><button type="button" class="btn btn-secondary" (click)="editBook(book)">Edit</button></td>
       <td><button type="button" class="btn btn-danger" (click)="deleteBook(book)">Delete</button></td>
     </tr>
     </tbody>

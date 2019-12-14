@@ -44,15 +44,7 @@ export class AuthorsComponent implements OnInit {
       id: author.id,
       name: author.name
     });
-  }
-
-  editAuthor(author){
     this.option = 'Edit';
-    console.log(author.id, author.name);
-    this.authorForm = this.fb.group({
-      id: author.id,
-      name: author.name
-    });
   }
 
   deleteAuthor(author){

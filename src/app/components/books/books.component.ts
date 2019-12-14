@@ -19,8 +19,11 @@ export class BooksComponent implements OnInit {
 
   option = 'Send';
 
-  cardTitle: string;
-  cardDesc: string;
+  card = {
+    title: '',
+    desc: '',
+  };
+
 
   constructor(protected service: DataService, protected fb: FormBuilder) {
 
@@ -52,18 +55,9 @@ export class BooksComponent implements OnInit {
       title: book.title,
       author: book.author
     });
-    this.cardTitle = book.title;
-    this.cardDesc = book.author;
-  }
-
-  editBook(book){
+    this.card.title = book.title;
+    this.card.desc = book.author;
     this.option = 'Edit';
-    console.log(book.id, book.name);
-    this.bookForm = this.fb.group({
-      id: book.id,
-      title: book.title,
-      author: book.author
-    });
   }
 
   deleteBook(book){
