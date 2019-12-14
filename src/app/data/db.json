@@ -1,0 +1,54 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Black Cat",
+      "author": "1"
+    },
+    {
+      "id": 2,
+      "title": "Tales of Cuthulu",
+      "author": "2"
+    },
+    {
+      "id": 3,
+      "title": "Black Humor Tales",
+      "author": "3"
+    },
+    {
+      "id": 4,
+      "title": "Raven",
+      "author": "1"
+    }
+  ],
+  "libraries": [
+    {
+      "id": 1,
+      "name": "Center",
+      "address": "Street 123",
+      "books": [
+        {
+          "book_id": 1
+        }
+      ]
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Edgar Allan Poe"
+    },
+    {
+      "id": 2,
+      "name": "H.P. Lovecraft"
+    },
+    {
+      "id": 3,
+      "name": "Saki"
+    },
+    {
+      "id": 4,
+      "name": "Arthur Conan Doyle"
+    }
+  ]
+}

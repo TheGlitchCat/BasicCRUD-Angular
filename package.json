@@ -1,5 +1,5 @@
 {
-  "name": "project1",
+  "name": "BasicCRUD",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
