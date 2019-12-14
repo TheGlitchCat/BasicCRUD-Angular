@@ -1,1 +1,95 @@
-<p>books works!</p>
+
+<div style="text-align: center" *ngIf="msgText !== null">
+  <app-msg [msgText]="msgText"></app-msg>
+</div>
+
+<h1>Books</h1>
+
+<div class="col-lg-12 row justify-content-center align-items-center container">
+
+  <div class="col-lg-6">
+    <form  [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
+
+      <div class="form-group row">
+        <label for="inputId3" class="col-sm-2 col-form-label">id</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="inputId3" formControlName="id" placeholder="Book id">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputTitle3" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="inputTitle3" formControlName="title" placeholder="Book Title">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="selectAuthor" class="col-sm-2 col-form-label">Author</label>
+        <div class="col-sm-8">
+          <select class="form-control" id="selectAuthor" formControlName="author">
+            <option value="null">Select Author</option>
+            <option *ngFor="let author of authors" value="{{author.id}}">{{author.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <!--
+      <div class="form-group row">
+        <label for="inputAuthor3" class="col-sm-2 col-form-label">Author</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="inputAuthor3" formControlName="author" placeholder="Author Id">
+        </div>
+      </div>
+      -->
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">{{option}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-lg-2 card" style="width: 18rem;">
+    <img src="http://via.placeholder.com/100" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{cardTitle}}</h5>
+      <ng-container *ngFor="let author of authors">
+        <p  *ngIf="author.id == cardDesc">{{author.name}}</p>
+      </ng-container>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="col-lg-12">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of books">
+      <td scope="row">{{book.id}}</td>
+      <td>{{book.title}}</td>
+      <ng-container *ngFor="let author of authors">
+        <td  *ngIf="author.id == book.author">{{author.name}}</td>
+      </ng-container>
+      <td><button type="button" class="btn btn-primary" (click)="showBook(book)">Show</button></td>
+      <td><button type="button" class="btn btn-secondary" (click)="editBook(book)">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteBook(book)">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
