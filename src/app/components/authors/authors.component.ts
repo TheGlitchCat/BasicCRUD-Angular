@@ -18,6 +18,10 @@ export class AuthorsComponent implements OnInit {
 
   option = 'Send';
 
+  card = {
+    title: ''
+  };
+
   constructor(protected service: DataService, protected fb: FormBuilder) {
 
     this.authorForm = this.fb.group({
@@ -44,6 +48,7 @@ export class AuthorsComponent implements OnInit {
       id: author.id,
       name: author.name
     });
+    this.card.title = author.name;
     this.option = 'Edit';
   }
 
