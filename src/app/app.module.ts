@@ -6,19 +6,19 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { Pantalla3Component } from './components/pantalla3/pantalla3.component';
 import { DataService } from './services/data.service';
 import { MsgComponent } from './components/msg/msg.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { BooksComponent } from './components/books/books.component';
+import { LibrariesComponent } from './components/libraries/libraries.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Pantalla3Component,
     MsgComponent,
     AuthorsComponent,
-    BooksComponent
+    BooksComponent,
+    LibrariesComponent
   ],
   imports: [
     BrowserModule,
