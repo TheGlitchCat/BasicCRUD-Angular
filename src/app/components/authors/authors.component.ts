@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DataService} from '../../services/data.service';
-import {Author} from '../../models/user.model';
+import {Author} from '../../models/models.model';
 
 @Component({
   selector: 'app-authors',

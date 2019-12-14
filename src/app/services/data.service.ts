@@ -48,20 +48,37 @@ export class DataService {
   }
 
   // LIBRARIES
-  getLibrearies(){
+  getLibraries(){
     return this.http.get(this.urlLibraries);
   }
 
-  postLibrearies(params){
+  postLibraries(params){
     return this.http.post(this.urlLibraries, params);
   }
 
-  putLibrearies(libraryId, params){
+  putLibraries(libraryId, params){
     return this.http.put(this.urlLibraries + '/' + libraryId, params);
   }
 
-  deleteLibrearies(libraryId){
+  deleteLibraries(libraryId){
     return this.http.delete(this.urlLibraries + '/' + libraryId);
+  }
+
+  // GENERICS
+  get(url: string){
+    return this.http.get(url);
+  }
+
+  post(url, params){
+    return this.http.post(url, params);
+  }
+
+  put(url, params){
+    return this.http.put(url, params);
+  }
+
+  delete(url){
+    return this.http.delete(url);
   }
 
 

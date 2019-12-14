@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DataService} from '../../services/data.service';
-import {Author, Book} from '../../models/user.model';
+import {Author, Book} from '../../models/models.model';
 
 @Component({
   selector: 'app-books',
